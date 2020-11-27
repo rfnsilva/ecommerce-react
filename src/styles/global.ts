@@ -12,8 +12,8 @@ export default createGlobalStyle`
     width: 100vw;
 
     font: 400 16px Roboto, sans-serif;
-    background: #010101;
-    color: #fff;
+    background: #fff;
+    color: #010101;
   }
 
   *, button, input {
