@@ -42,7 +42,6 @@ export const Container = styled.div`
     height: 43px;
     border: 1px solid #fff;
     background: #000;
-    font-family: 'Roboto', sans-serif;
     color: #fff;
     font-size: 16px;
     border-radius: 22px;
