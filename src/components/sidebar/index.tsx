@@ -1,4 +1,5 @@
 import React from 'react'
+import { FaGrinWink, FaTachometerAlt, FaCog, FaWrench } from 'react-icons/fa'
 
 import { Container } from './styles'
 
@@ -6,7 +7,7 @@ const sidebar: React.FC = () => {
   return (
     <Container>
       <ul
-        className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion"
+        className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled"
         id="accordionSidebar"
       >
         <a
@@ -14,7 +15,8 @@ const sidebar: React.FC = () => {
           href="index.html"
         >
           <div className="sidebar-brand-icon rotate-n-15">
-            <i className="fas fa-laugh-wink"></i>
+            {/* <i className="fas fa-laugh-wink"></i> */}
+            <FaGrinWink />
           </div>
           <div className="sidebar-brand-text mx-3">
             SB Admin <sup>2</sup>
@@ -25,7 +27,8 @@ const sidebar: React.FC = () => {
 
         <li className="nav-item active">
           <a className="nav-link" href="index.html">
-            <i className="fas fa-fw fa-tachometer-alt"></i>
+            {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
+            <FaTachometerAlt />
             <span>Dashboard</span>
           </a>
         </li>
@@ -43,7 +46,8 @@ const sidebar: React.FC = () => {
             aria-expanded="true"
             aria-controls="collapseTwo"
           >
-            <i className="fas fa-fw fa-cog"></i>
+            {/* <i className="fas fa-fw fa-cog"></i> */}
+            <FaCog />
             <span>Components</span>
           </a>
           <div
@@ -73,7 +77,8 @@ const sidebar: React.FC = () => {
             aria-expanded="true"
             aria-controls="collapseUtilities"
           >
-            <i className="fas fa-fw fa-wrench"></i>
+            {/* <i className="fas fa-fw fa-wrench"></i> */}
+            <FaWrench />
             <span>Utilities</span>
           </a>
           <div

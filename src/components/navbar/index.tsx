@@ -1,6 +1,8 @@
 import React from 'react'
+import { FaBell, FaRegCommentDots, FaSearch, FaBars } from 'react-icons/fa'
 
 import { Container, Wrapper } from './styles'
+import profileImage from '../../assets/img/profile.svg'
 
 const navbar: React.FC = () => {
   return (
@@ -11,7 +13,8 @@ const navbar: React.FC = () => {
             id="sidebarToggleTop"
             className="btn btn-link d-md-none rounded-circle mr-3"
           >
-            <i className="fa fa-bars"></i>
+            {/* <i className="fa fa-bars"></i> */}
+            <FaBars />
           </button>
           <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
             <div className="input-group">
@@ -24,7 +27,8 @@ const navbar: React.FC = () => {
               />
               <div className="input-group-append">
                 <button className="btn btn-primary" type="button">
-                  <i className="fas fa-search fa-sm"></i>
+                  {/* <i className="fas fa-search fa-sm"></i> */}
+                  <FaSearch />
                 </button>
               </div>
             </div>
@@ -40,7 +44,8 @@ const navbar: React.FC = () => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i className="fas fa-search fa-fw"></i>
+                {/* <i className="fas fa-search fa-fw"></i> */}
+                <FaSearch />
               </a>
               <div
                 className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
@@ -57,7 +62,8 @@ const navbar: React.FC = () => {
                     />
                     <div className="input-group-append">
                       <button className="btn btn-primary" type="button">
-                        <i className="fas fa-search fa-sm"></i>
+                        {/* <i className="fas fa-search fa-sm"></i> */}
+                        <FaSearch />
                       </button>
                     </div>
                   </div>
@@ -74,8 +80,9 @@ const navbar: React.FC = () => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i className="fas fa-bell fa-fw"></i>
-                <span className="badge badge-danger badge-counter">3+</span>
+                {/* <i className="fas fa-bell fa-fw"></i> */}
+                <FaBell />
+                <span className="badge badge-danger badge-counter">3</span>
               </a>
               <div
                 className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
@@ -93,29 +100,6 @@ const navbar: React.FC = () => {
                     <span className="font-weight-bold">
                       A new monthly report is ready to download!
                     </span>
-                  </div>
-                </a>
-                <a className="dropdown-item d-flex align-items-center" href="#">
-                  <div className="mr-3">
-                    <div className="icon-circle bg-success">
-                      <i className="fas fa-donate text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="small text-gray-500">December 7, 2019</div>
-                    $290.29 has been deposited into your account!
-                  </div>
-                </a>
-                <a className="dropdown-item d-flex align-items-center" href="#">
-                  <div className="mr-3">
-                    <div className="icon-circle bg-warning">
-                      <i className="fas fa-exclamation-triangle text-white"></i>
-                    </div>
-                  </div>
-                  <div>
-                    <div className="small text-gray-500">December 2, 2019</div>
-                    Spending Alert: We ve noticed unusually high spending for
-                    your account.
                   </div>
                 </a>
                 <a
@@ -136,7 +120,8 @@ const navbar: React.FC = () => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                <i className="fas fa-envelope fa-fw"></i>
+                {/* <i className="fas fa-envelope fa-fw"></i> */}
+                <FaRegCommentDots />
                 <span className="badge badge-danger badge-counter">7</span>
               </a>
               <div
@@ -144,61 +129,7 @@ const navbar: React.FC = () => {
                 aria-labelledby="messagesDropdown"
               >
                 <h6 className="dropdown-header">Message Center</h6>
-                <a className="dropdown-item d-flex align-items-center" href="#">
-                  <div className="dropdown-list-image mr-3">
-                    <img
-                      className="rounded-circle"
-                      src="img/undraw_profile_1.svg"
-                      alt=""
-                    />
-                    <div className="status-indicator bg-success"></div>
-                  </div>
-                  <div className="font-weight-bold">
-                    <div className="text-truncate">
-                      Hi there! I am wondering if you can help me with a problem
-                      I ve been having.
-                    </div>
-                    <div className="small text-gray-500">
-                      Emily Fowler · 58m
-                    </div>
-                  </div>
-                </a>
-                <a className="dropdown-item d-flex align-items-center" href="#">
-                  <div className="dropdown-list-image mr-3">
-                    <img
-                      className="rounded-circle"
-                      src="img/undraw_profile_2.svg"
-                      alt=""
-                    />
-                    <div className="status-indicator"></div>
-                  </div>
-                  <div>
-                    <div className="text-truncate">
-                      I have the photos that you ordered last month, how would
-                      you like them sent to you?
-                    </div>
-                    <div className="small text-gray-500">Jae Chun · 1d</div>
-                  </div>
-                </a>
-                <a className="dropdown-item d-flex align-items-center" href="#">
-                  <div className="dropdown-list-image mr-3">
-                    <img
-                      className="rounded-circle"
-                      src="img/undraw_profile_3.svg"
-                      alt=""
-                    />
-                    <div className="status-indicator bg-warning"></div>
-                  </div>
-                  <div>
-                    <div className="text-truncate">
-                      Last month s report looks great, I am very happy with the
-                      progress so far, keep up the good work!
-                    </div>
-                    <div className="small text-gray-500">
-                      Morgan Alvarez · 2d
-                    </div>
-                  </div>
-                </a>
+
                 <a className="dropdown-item d-flex align-items-center" href="#">
                   <div className="dropdown-list-image mr-3">
                     <img
@@ -243,7 +174,7 @@ const navbar: React.FC = () => {
                 </span>
                 <img
                   className="img-profile rounded-circle"
-                  src="img/undraw_profile.svg"
+                  src={profileImage}
                 />
               </a>
               <div
