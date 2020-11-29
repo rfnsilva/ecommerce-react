@@ -1,5 +1,9 @@
 import styled from 'styled-components'
 
+interface Props {
+  isOpen: boolean
+}
+
 export const Container = styled.div`
   display: flex;
   background-color: #f8f9fc;
@@ -68,6 +72,12 @@ export const Wrapper = styled.div`
     height: calc(4.375rem - 2rem);
     margin: auto 1rem;
   }
+
+  /* @media (max-width: 493px) {
+    .toggled {
+      display: none !important;
+    }
+  } */
 
   @media (min-width: 576px) {
     .dropdown {

@@ -1,11 +1,37 @@
-import React from 'react'
-import { FaGrinWink, FaTachometerAlt, FaCog, FaWrench } from 'react-icons/fa'
+import React, { useState } from 'react'
+import {
+  FaGrinWink,
+  FaTachometerAlt,
+  FaCog,
+  FaWrench,
+  FaAngleRight
+} from 'react-icons/fa'
 
-import { Container } from './styles'
+import { Container, Icon } from './styles'
 
-const sidebar: React.FC = () => {
+interface Props {
+  isOpenSidebar: boolean
+}
+const sidebar: React.FC<Props> = ({ isOpenSidebar }) => {
+  const [isOpenSidebarSubMenu, setIsOpenSidebarSubMenu] = useState<boolean>(
+    false
+  )
+  const [
+    subMenuSidebarClassName,
+    setSubMenuSidebarClassName
+  ] = useState<string>('')
+
+  const toggleSidebarSubMenu = (className: string) => {
+    setIsOpenSidebarSubMenu(!isOpenSidebarSubMenu)
+    setSubMenuSidebarClassName(className)
+  }
+
   return (
-    <Container>
+    <Container
+      isOpenSidebarSubMenu={isOpenSidebarSubMenu}
+      isOpenSidebar={isOpenSidebar}
+      subMenuSidebarClassName={subMenuSidebarClassName}
+    >
       <ul
         className="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion toggled"
         id="accordionSidebar"
@@ -15,11 +41,10 @@ const sidebar: React.FC = () => {
           href="index.html"
         >
           <div className="sidebar-brand-icon rotate-n-15">
-            {/* <i className="fas fa-laugh-wink"></i> */}
             <FaGrinWink />
           </div>
           <div className="sidebar-brand-text mx-3">
-            SB Admin <sup>2</sup>
+            Admin <sup>2</sup>
           </div>
         </a>
 
@@ -27,7 +52,6 @@ const sidebar: React.FC = () => {
 
         <li className="nav-item active">
           <a className="nav-link" href="index.html">
-            {/* <i className="fas fa-fw fa-tachometer-alt"></i> */}
             <FaTachometerAlt />
             <span>Dashboard</span>
           </a>
@@ -37,25 +61,18 @@ const sidebar: React.FC = () => {
 
         <div className="sidebar-heading">Interface</div>
 
-        <li className="nav-item">
-          <a
-            className="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapseTwo"
-            aria-expanded="true"
-            aria-controls="collapseTwo"
-          >
-            {/* <i className="fas fa-fw fa-cog"></i> */}
+        <li
+          className="nav-item"
+          onClick={() => toggleSidebarSubMenu('submenu1')}
+        >
+          <a className="nav-link" href="#">
             <FaCog />
             <span>Components</span>
+            <Icon>
+              <FaAngleRight />
+            </Icon>
           </a>
-          <div
-            id="collapseTwo"
-            className="collapse"
-            aria-labelledby="headingTwo"
-            data-parent="#accordionSidebar"
-          >
+          <div className="submenu1">
             <div className="bg-white py-2 collapse-inner rounded">
               <h6 className="collapse-header">Custom Components:</h6>
               <a className="collapse-item" href="buttons.html">
@@ -68,25 +85,18 @@ const sidebar: React.FC = () => {
           </div>
         </li>
 
-        <li className="nav-item">
-          <a
-            className="nav-link collapsed"
-            href="#"
-            data-toggle="collapse"
-            data-target="#collapseUtilities"
-            aria-expanded="true"
-            aria-controls="collapseUtilities"
-          >
-            {/* <i className="fas fa-fw fa-wrench"></i> */}
+        <li
+          className="nav-item"
+          onClick={() => toggleSidebarSubMenu('submenu2')}
+        >
+          <a className="nav-link" href="#">
             <FaWrench />
             <span>Utilities</span>
+            <Icon>
+              <FaAngleRight />
+            </Icon>
           </a>
-          <div
-            id="collapseUtilities"
-            className="collapse"
-            aria-labelledby="headingUtilities"
-            data-parent="#accordionSidebar"
-          >
+          <div className="submenu2">
             <div className="bg-white py-2 collapse-inner rounded">
               <h6 className="collapse-header">Custom Utilities:</h6>
               <a className="collapse-item" href="utilities-color.html">

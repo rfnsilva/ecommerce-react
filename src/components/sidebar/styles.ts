@@ -1,7 +1,26 @@
 import styled from 'styled-components'
 
-export const Container = styled.div`
+interface Props {
+  isOpenSidebarSubMenu: boolean
+  subMenuSidebarClassName?: string
+  isOpenSidebar: boolean
+}
+
+export const Container = styled.div<Props>`
   display: flex;
+  .${props => props.subMenuSidebarClassName} {
+    display: ${props =>
+      props.isOpenSidebarSubMenu ? 'block !important' : 'none !important'};
+    margin: 0 1rem;
+  }
+
+  .submenu1 {
+    display: none;
+  }
+
+  .submenu2 {
+    display: none;
+  }
 
   .navbar-nav {
     display: flex;
@@ -72,6 +91,7 @@ export const Container = styled.div`
     padding: 0.75rem 1rem;
     width: 6.5rem;
   }
+
   .nav-link span {
     font-size: 0.65rem;
     display: block;
@@ -133,18 +153,37 @@ export const Container = styled.div`
       text-align: left;
       padding: 1rem;
       width: 14rem;
+      display: flex;
+      align-items: center;
     }
 
     .nav-link span {
       font-size: 0.85rem;
       display: inline;
-      margin-left: 0.5rem;
+      margin-left: 0.6rem;
     }
   }
+
   @media (max-width: 494px) {
-    .toggled {
-      width: 0 !important;
-      overflow: hidden;
+  }
+
+  @media (max-width: 767px) {
+    .${props => props.subMenuSidebarClassName} {
+      display: ${props =>
+        props.isOpenSidebarSubMenu ? 'block !important' : 'none !important'};
+      position: absolute;
+      left: calc(5.5rem + 1.5rem / 2);
+      z-index: 1;
+      top: 2px;
     }
+    .toggled {
+      display: ${props =>
+        props.isOpenSidebar ? 'block !important' : 'none !important'};
+    }
+  }
+`
+export const Icon = styled.div`
+  @media (max-width: 767px) {
+    display: none;
   }
 `

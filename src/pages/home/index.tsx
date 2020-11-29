@@ -1,17 +1,12 @@
 import React from 'react'
 
-import Navbar from '../../components/navbar'
-
-import Sidebar from '../../components/sidebar'
-
-import { Container } from './styles'
+import Layout from '../../components/layoutHome'
 
 const home: React.FC = () => {
   return (
-    <Container>
-      <Sidebar />
-      <Navbar />
-    </Container>
+    <>
+      <Layout />
+    </>
   )
 }
 

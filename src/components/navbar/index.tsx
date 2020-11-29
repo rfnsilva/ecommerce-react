@@ -2,18 +2,22 @@ import React from 'react'
 import { FaBell, FaRegCommentDots, FaSearch, FaBars } from 'react-icons/fa'
 
 import { Container, Wrapper } from './styles'
+
 import profileImage from '../../assets/img/profile.svg'
 
-const navbar: React.FC = () => {
+interface Props {
+  toggleSidebar(): void
+}
+
+const navbar: React.FC<Props> = ({ toggleSidebar }) => {
   return (
     <Container>
       <Wrapper>
         <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
           <button
-            id="sidebarToggleTop"
+            onClick={toggleSidebar}
             className="btn btn-link d-md-none rounded-circle mr-3"
           >
-            {/* <i className="fa fa-bars"></i> */}
             <FaBars />
           </button>
           <form className="d-none d-sm-inline-block form-inline mr-auto ml-md-3 my-2 my-md-0 mw-100 navbar-search">
@@ -27,7 +31,6 @@ const navbar: React.FC = () => {
               />
               <div className="input-group-append">
                 <button className="btn btn-primary" type="button">
-                  {/* <i className="fas fa-search fa-sm"></i> */}
                   <FaSearch />
                 </button>
               </div>
@@ -44,7 +47,6 @@ const navbar: React.FC = () => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                {/* <i className="fas fa-search fa-fw"></i> */}
                 <FaSearch />
               </a>
               <div
@@ -62,7 +64,6 @@ const navbar: React.FC = () => {
                     />
                     <div className="input-group-append">
                       <button className="btn btn-primary" type="button">
-                        {/* <i className="fas fa-search fa-sm"></i> */}
                         <FaSearch />
                       </button>
                     </div>
@@ -80,7 +81,6 @@ const navbar: React.FC = () => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                {/* <i className="fas fa-bell fa-fw"></i> */}
                 <FaBell />
                 <span className="badge badge-danger badge-counter">3</span>
               </a>
@@ -120,7 +120,6 @@ const navbar: React.FC = () => {
                 aria-haspopup="true"
                 aria-expanded="false"
               >
-                {/* <i className="fas fa-envelope fa-fw"></i> */}
                 <FaRegCommentDots />
                 <span className="badge badge-danger badge-counter">7</span>
               </a>
