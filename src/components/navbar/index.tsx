@@ -1,5 +1,12 @@
-import React from 'react'
-import { FaBell, FaRegCommentDots, FaSearch, FaBars } from 'react-icons/fa'
+import React, { useState } from 'react'
+import {
+  FaBell,
+  FaRegCommentDots,
+  FaSearch,
+  FaBars,
+  FaUserAlt,
+  FaSignInAlt
+} from 'react-icons/fa'
 
 import { Container, Wrapper } from './styles'
 
@@ -10,9 +17,47 @@ interface Props {
 }
 
 const navbar: React.FC<Props> = ({ toggleSidebar }) => {
+  const [isOpenAlerts, setIsOpenAlerts] = useState<boolean>(false)
+  const [isOpenMessages, setIsOpenMessages] = useState<boolean>(false)
+  const [isOpenProfile, setIsOpenProfile] = useState<boolean>(false)
+  const [isOpenSearch, setIsOpenSearch] = useState<boolean>(false)
+
+  const toggleAlerts = () => {
+    setIsOpenAlerts(!isOpenAlerts)
+    setIsOpenMessages(false)
+    setIsOpenProfile(false)
+    setIsOpenSearch(false)
+  }
+
+  const toggleMessages = () => {
+    setIsOpenMessages(!isOpenMessages)
+    setIsOpenAlerts(false)
+    setIsOpenProfile(false)
+    setIsOpenSearch(false)
+  }
+
+  const toggleProfile = () => {
+    setIsOpenProfile(!isOpenProfile)
+    setIsOpenMessages(false)
+    setIsOpenAlerts(false)
+    setIsOpenSearch(false)
+  }
+
+  const toggleSearch = () => {
+    setIsOpenSearch(!isOpenSearch)
+    setIsOpenProfile(false)
+    setIsOpenMessages(false)
+    setIsOpenAlerts(false)
+  }
+
   return (
     <Container>
-      <Wrapper>
+      <Wrapper
+        isOpenMessages={isOpenMessages}
+        isOpenAlerts={isOpenAlerts}
+        isOpenProfile={isOpenProfile}
+        isOpenSearch={isOpenSearch}
+      >
         <nav className="navbar navbar-expand navbar-light bg-white topbar mb-4 static-top shadow">
           <button
             onClick={toggleSidebar}
@@ -41,16 +86,14 @@ const navbar: React.FC<Props> = ({ toggleSidebar }) => {
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
-                id="searchDropdown"
                 role="button"
-                data-toggle="dropdown"
                 aria-haspopup="true"
-                aria-expanded="false"
+                onClick={toggleSearch}
               >
                 <FaSearch />
               </a>
               <div
-                className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in"
+                className="dropdown-menu dropdown-menu-right p-3 shadow animated--grow-in search"
                 aria-labelledby="searchDropdown"
               >
                 <form className="form-inline mr-auto w-100 navbar-search">
@@ -75,17 +118,15 @@ const navbar: React.FC<Props> = ({ toggleSidebar }) => {
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
-                id="alertsDropdown"
                 role="button"
-                data-toggle="dropdown"
                 aria-haspopup="true"
-                aria-expanded="false"
+                onClick={toggleAlerts}
               >
                 <FaBell />
                 <span className="badge badge-danger badge-counter">3</span>
               </a>
               <div
-                className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in alerts"
                 aria-labelledby="alertsDropdown"
               >
                 <h6 className="dropdown-header">Alerts Center</h6>
@@ -114,17 +155,15 @@ const navbar: React.FC<Props> = ({ toggleSidebar }) => {
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
-                id="messagesDropdown"
                 role="button"
-                data-toggle="dropdown"
                 aria-haspopup="true"
-                aria-expanded="false"
+                onClick={toggleMessages}
               >
                 <FaRegCommentDots />
                 <span className="badge badge-danger badge-counter">7</span>
               </a>
               <div
-                className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                className="dropdown-list dropdown-menu dropdown-menu-right shadow animated--grow-in messages"
                 aria-labelledby="messagesDropdown"
               >
                 <h6 className="dropdown-header">Message Center</h6>
@@ -162,11 +201,9 @@ const navbar: React.FC<Props> = ({ toggleSidebar }) => {
               <a
                 className="nav-link dropdown-toggle"
                 href="#"
-                id="userDropdown"
                 role="button"
-                data-toggle="dropdown"
                 aria-haspopup="true"
-                aria-expanded="false"
+                onClick={toggleProfile}
               >
                 <span className="mr-2 d-none d-lg-inline text-gray-600 small">
                   Douglas McGee
@@ -177,29 +214,16 @@ const navbar: React.FC<Props> = ({ toggleSidebar }) => {
                 />
               </a>
               <div
-                className="dropdown-menu dropdown-menu-right shadow animated--grow-in"
+                className="dropdown-menu dropdown-menu-right shadow animated--grow-in profile"
                 aria-labelledby="userDropdown"
               >
                 <a className="dropdown-item" href="#">
-                  <i className="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
+                  <FaUserAlt />
                   Profile
                 </a>
-                <a className="dropdown-item" href="#">
-                  <i className="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Settings
-                </a>
-                <a className="dropdown-item" href="#">
-                  <i className="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
-                  Activity Log
-                </a>
                 <div className="dropdown-divider"></div>
-                <a
-                  className="dropdown-item"
-                  href="#"
-                  data-toggle="modal"
-                  data-target="#logoutModal"
-                >
-                  <i className="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
+                <a className="dropdown-item" href="#">
+                  <FaSignInAlt />
                   Logout
                 </a>
               </div>
